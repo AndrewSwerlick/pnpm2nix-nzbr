@@ -11,7 +11,7 @@ let
   fixVersion = ver: head (splitString "_" ver);
   getVersion = fullname: fixVersion (last (splitString "@" (last (tail (splitString "/" fullname)))));
   getScope = fullname: init (tail (splitString "/" fullname));
-  getPath = fullname: (concatStringsSep "/" flatten([(getScope fullname) (getName fullname)]));
+  getPath = fullname: (concatStringsSep "/" (flatten [(getScope fullname) (getName fullname)]));
 in
 rec {
 
