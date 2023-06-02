@@ -7,7 +7,7 @@
 
 with lib;
 let
-  getName = fullname: init (splitString "@" (last (tail (splitString "/" fullname)));
+  getName = fullname: init (splitString "@" (last (tail (splitString "/" fullname))));
   fixVersion = ver: head (splitString "_" ver);
   getVersion = fullname: fixVersion (last (splitString "@" (last (tail (splitString "/" fullname)))));
   getScope = init (tail (splitString "/" fullname));
