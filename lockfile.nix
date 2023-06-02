@@ -22,12 +22,12 @@ rec {
       mapAttrsToList
         (n: v:
           let
-            name = getPath n;
-            baseName = init (splitString "@" (nameAndVersion name));
+            path = getPath n;
+            name = getName name;
             version = getVersion n;
           in
           fetchurl {
-            url = "${registry}/${name}/-/${baseName}-${version}.tgz";
+            url = "${registry}/${path}/-/${name}-${version}.tgz";
             sha512 = v.resolution.integrity;
           }
         )
