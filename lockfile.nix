@@ -10,7 +10,7 @@ let
   getName = fullname: head (builtins.split "@" (last (tail (builtins.split "/" fullname))));
   fixVersion = ver: head (builtins.split "_" ver);
   getVersion = fullname: fixVersion (last (builtins.split "@" (last (tail (builtins.split "/" fullname)))));
-  getScope = fullname: head (tail (builtins.split "/" fullname));
+  getScope = fullname: head (builtins.split "/" fullname);
   getPath = fullname: (concatStringsSep "/" [(getScope fullname) (getName fullname)]);
 in
 rec {
