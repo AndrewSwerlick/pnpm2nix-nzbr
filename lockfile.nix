@@ -26,6 +26,7 @@ rec {
             name = getName name;
             version = getVersion n;
           in
+          (builtins.trace n); 
           fetchurl {
             url = "${registry}/${path}/-/${name}-${version}.tgz";
             sha512 = v.resolution.integrity;
