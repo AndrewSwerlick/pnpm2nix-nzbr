@@ -7,10 +7,10 @@
 
 with lib;
 let
-  getName = fullname: init (splitString "@" (last (tail (splitString "/" fullname))));
-  fixVersion = ver: head (splitString "_" ver);
-  getVersion = fullname: fixVersion (last (splitString "@" (last (tail (splitString "/" fullname)))));
-  getScope = fullname: init (tail (splitString "/" fullname));
+  getName = fullname: init (builtins.split "@" (last (tail (builtins.split "/" fullname))));
+  fixVersion = ver: head (builtins.split "_" ver);
+  getVersion = fullname: fixVersion (last (builtins.split "@" (last (tail (builtins.split "/" fullname)))));
+  getScope = fullname: init (tail (builtins.split "/" fullname));
   getPath = fullname: (concatStringsSep "/" (flatten [(getScope fullname) (getName fullname)]));
 in
 rec {
